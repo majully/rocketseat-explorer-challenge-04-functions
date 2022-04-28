@@ -1,40 +1,34 @@
 /* Lista de Alunos e nota de cada prova */
 const students = [
   {
-    name: "Frederyco Gomes",
+    name: "Frederyco",
     noteOne: 5,
     noteTwo: 6
   },
   {
-    name: "Kleber Ferreira",
+    name: "Kleber",
     noteOne: 4,
     noteTwo: 6
   },
   {
-    name: "Yuri Silva",
+    name: "Yuri",
     noteOne: 3,
     noteTwo: 3
   },
 ];
 
-function averageStudent(noteOne, noteTwo) {
-  let average = (noteOne + noteTwo / 2);
-  let result = average > 6;
-  average = average.toFixed(2);
-  if(result) {
-    alert("Parabéns, " + student + "! Sua média foi de: " + average)
+/* Função calcular média do aluno e retornar mensagem de aprovado ou reprovado */
+function averageStudent(student) {
+  let average = (student.noteOne + student.noteTwo / 2);
+  average = average.toFixed(1);
+  if(average > 6) {
+    return `A média do(a) aluno(a) ${student.name} é: ${average} \nParabéns, ${student.name}! Você foi aprovado(a) no concurso!`;
   } else if (average < 7) {
-    alert("Reprovado")
-  } else {
-    alert(student + " estude para sua prova de recuperação! Sua média foi de: " +  average)
+    return `A média do(a) aluno(a) ${student.name} é: ${average} \nNão foi dessa vez, ${student.name}! Tente novamente!`;
   }
 }
 
-function printStudentAverage(student) {
-  return `A média do(a) aluno(a) ${student.name} é`;
-}
-
 for (let student of students) {
-  let averageMessage = printStudentAverage(student);
+  let averageMessage = averageStudent(student);
   alert(averageMessage);
 }
